@@ -22,5 +22,5 @@ COPY --from=install /temp/prod/node_modules node_modules
 COPY --from=prerelease /usr/src/app/out/index.js .
 COPY --from=prerelease /usr/src/app/package.json .
 USER bun
-EXPOSE 3000/tcp
+EXPOSE 8080/tcp
 ENTRYPOINT ["bun", "run", "index.js"]

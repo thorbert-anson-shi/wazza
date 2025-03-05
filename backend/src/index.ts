@@ -11,6 +11,6 @@ app.route("/quizzes", quizzes);
 app.route("/users", users);
 
 export default {
-  port: 3000,
+  port: 8080,
   fetch: app.fetch,
 };
