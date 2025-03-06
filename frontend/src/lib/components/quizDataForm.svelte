@@ -6,7 +6,7 @@
 	let props: FormAction = $props();
 </script>
 
-<form method="post" action={props.action}>
+<form method="post" class="flex flex-col" action={props.action}>
 	<label for="quiz-title-input">Title</label>
 	<input type="text" name="quizTitle" id="quiz-title-input" />
 

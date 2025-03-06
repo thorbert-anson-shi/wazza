@@ -1,3 +1,5 @@
+export const API_URL = import.meta.env.API_URL;
+
 export const pageRoutes = {
 	home: '/home',
 	join: {

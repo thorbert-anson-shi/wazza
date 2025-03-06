@@ -1,4 +1,6 @@
-export interface QuizDetails {
+export type QuizDetails = QuizData & QuizMetadata;
+
+export interface QuizData {
 	id: string;
 	thumbnail: string;
 	title: string;
@@ -6,6 +8,9 @@ export interface QuizDetails {
 	description: string;
 	categories: string[];
 	durationInSeconds: number;
+}
+
+export interface QuizMetadata {
 	createdAt: Date;
 	lastUpdated: Date;
 }
