@@ -21,7 +21,7 @@ app.use(async (c, next) => {
 app.get("/", async (c) => {
   const db = c.get("db");
   const quizzes = await db.select().from(table).where(eq(table.isValid, true));
-  return c.json({ content: quizzes });
+  return c.json(quizzes);
 });
 
 app.get("/:id", async (c) => {
