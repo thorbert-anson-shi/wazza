@@ -3,6 +3,8 @@ import { createInsertSchema, createUpdateSchema } from "drizzle-zod";
 
 export const insertQuizSchema = createInsertSchema(quizInDev).omit({
   isValid: true,
+  createdAt: true,
+  lastUpdated: true,
 });
 
 export const updateQuizSchema = createUpdateSchema(quizInDev).omit({
