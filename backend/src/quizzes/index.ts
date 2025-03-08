@@ -19,7 +19,6 @@ app.use(async (c, next) => {
 });
 
 app.get("/", async (c) => {
-  console.log(c.req.header("Authorization"));
   const db = c.get("db");
   const quizzes = await db.select().from(table).where(eq(table.isValid, true));
   return c.json(quizzes);
