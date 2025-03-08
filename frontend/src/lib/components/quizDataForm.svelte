@@ -10,6 +10,9 @@
 	<label for="quiz-title-input">Title</label>
 	<input type="text" name="quizTitle" id="quiz-title-input" />
 
+	<label for="quiz-creator-input">Creator</label>
+	<input type="text" name="quizCreator" id="quiz-creator-input" />
+
 	<label for="quiz-description-input">Description</label>
 	<input type="text" name="quizDescription" id="quiz-description-input" />
 
