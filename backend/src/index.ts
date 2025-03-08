@@ -15,6 +15,14 @@ app.use(
   })
 );
 
+app.options("*", (c) => {
+  c.header("Access-Control-Allow-Origin", "*");
+  c.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
+  c.header("Access-Control-Allow-Headers", "Authorization, Content-Type");
+  c.header("Access-Control-Allow-Credentials", "true");
+  return c.text("OK");
+});
+
 app.use(appendTrailingSlash());
 app.use(trimTrailingSlash());
 app.route("/quizzes", quizzes);
