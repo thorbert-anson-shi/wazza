@@ -1,14 +1,12 @@
 import type { QuizData } from './types';
 
 const API_BASE_URL = `${import.meta.env.VITE_API_URL!}/quizzes`;
-const API_KEY = import.meta.env.VITE_API_KEY;
 
 export class ApiService {
 	static async getQuizzes() {
 		const response = await fetch(`${API_BASE_URL}/`, {
-			headers: { Authorization: `Bearer ${API_KEY}`, 'Content-Type': 'application/json' }
+			headers: { 'Content-Type': 'application/json' }
 		});
-		console.log(await response.text());
 		if (!response.ok) throw new Error('Failed to fetch quizzes');
 		return response.json();
 	}
