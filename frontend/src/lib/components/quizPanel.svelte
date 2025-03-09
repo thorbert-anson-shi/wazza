@@ -1,25 +1,28 @@
 <script lang="ts">
 	import { timeToString } from '../utils';
-	import type { QuizDetails } from '$lib/types';
+	import type { QuizData } from '$lib/types';
 	import { pageRoutes } from '$lib/routes';
+	import { CldImage } from 'svelte-cloudinary';
 
-	let props: QuizDetails = $props();
+	let props: QuizData = $props();
 </script>
 
-<a href={pageRoutes.join.quiz(props.id)}>
+<a draggable="false" href={pageRoutes.join.quiz(props.id)}>
 	<div
-		class="w-96 shrink-0 overflow-clip rounded-xl bg-white drop-shadow-md duration-100 ease-in hover:scale-[1.03] hover:cursor-pointer hover:drop-shadow-lg active:scale-[0.98]"
+		class="w-fit shrink-0 overflow-clip rounded-xl bg-white drop-shadow-md duration-100 ease-in hover:scale-[1.03] hover:cursor-pointer hover:drop-shadow-lg active:scale-[0.98]"
 	>
-		<img
+		<CldImage
 			id="quizThumbnail"
-			class="border-leafy-200 h-48 w-full border-b-4 object-cover"
-			src={props.thumbnail}
-			alt=""
+			draggable="false"
+			class="border-leafy-200 h-48 w-fit border-b-4 object-cover"
+			width="300"
+			height="200"
+			src={props.thumbnail == null ? 'default' : props.thumbnail}
 		/>
 		<div id="quizInfo" class="font-poppins p-5">
 			<h3
 				id="quizTitle"
-				class="overflow-hidden text-lg font-semibold text-nowrap text-ellipsis text-black"
+				class="overflow-hidden text-ellipsis text-nowrap text-lg font-semibold text-black"
 			>
 				{props.title}
 			</h3>
@@ -27,7 +30,6 @@
 				Created by {props.creatorName}
 			</p>
 
-			<p id="lastUpdated">{props.lastUpdated}</p>
 			<p id="quizDuration" class="text-grey-800">
 				time: {timeToString(props.durationInSeconds)}
 			</p>

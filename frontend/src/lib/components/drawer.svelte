@@ -7,7 +7,7 @@
 <nav>
 	<div
 		id="navbar-wrapper"
-		class="bg-brown-400 flex flex-col items-center justify-between text-white {props.class}"
+		class="bg-brown-400 flex w-80 flex-col items-center justify-between text-white {props.class}"
 	>
 		<h1
 			class="font-sansita text-brown-200 w-full cursor-default py-10 text-center text-7xl font-bold"
@@ -20,17 +20,17 @@
 		>
 			<a
 				href={pageRoutes.join.byCode}
-				class="visual-button flex justify-center rounded-lg p-3 text-wrap text-white"
+				class="visual-button flex justify-center text-wrap rounded-lg p-3 text-white"
 				><h2 class="text-center">Join by code</h2>
 			</a>
 			<a
 				href={pageRoutes.quizzes.create}
-				class="visual-button flex justify-center rounded-lg p-3 text-wrap text-white"
+				class="visual-button flex justify-center text-wrap rounded-lg p-3 text-white"
 				><h2 class="text-center">Create a quiz</h2>
 			</a>
 			<a
 				href={pageRoutes.account}
-				class="visual-button flex justify-center rounded-lg p-3 text-wrap text-white"
+				class="visual-button flex justify-center text-wrap rounded-lg p-3 text-white"
 				><h2 class="text-center">Manage your quizzes</h2>
 			</a>
 		</div>

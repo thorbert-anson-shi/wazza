@@ -15,6 +15,7 @@
 				creatorName={quiz.creatorName}
 				durationInSeconds={quiz.durationInSeconds}
 				thumbnail={quiz.thumbnail}
+				description={quiz.description}
 			/>
 		{/each}
 	</div>

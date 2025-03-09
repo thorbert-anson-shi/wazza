@@ -11,6 +11,9 @@ export const pageRoutes = {
 	quizzes: {
 		list: '/quizzes',
 		create: '/quizzes/create',
+		edit: (id: string) => {
+			return `/quizzes/edit/${id}`;
+		},
 		myQuizzes: '/quizzes/my-quizzes'
 	},
 	account: '/me'

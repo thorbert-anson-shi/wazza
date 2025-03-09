@@ -1,24 +1,23 @@
-import type { QuizData } from './types';
+import type { QuizDetails } from './types';
 
-const API_BASE_URL = `${import.meta.env.VITE_API_URL!}/quizzes`;
+const API_BASE_URL = `${import.meta.env.VITE_API_URL_DEV!}`;
 
 export class ApiService {
-	static async getQuizzes() {
-		const response = await fetch(`${API_BASE_URL}/`, {
-			headers: { 'Content-Type': 'application/json' }
-		});
+	static async getQuizzes(): Promise<QuizDetails[]> {
+		const response = await fetch(`${API_BASE_URL}/quizzes`);
 		if (!response.ok) throw new Error('Failed to fetch quizzes');
 		return response.json();
 	}
 
-	static async getQuizById(id: string) {
-		const response = await fetch(`${API_BASE_URL}/${id}`);
+	static async getQuizById(id: string): Promise<QuizDetails[]> {
+		const response = await fetch(`${API_BASE_URL}/quizzes/${id}`);
 		if (!response.ok) throw new Error('Failed to fetch quiz');
-		return response.json();
+		let json = await response.json();
+		return json;
 	}
 
 	static async createQuiz(quizData: string) {
-		const response = await fetch(`${API_BASE_URL}/`, {
+		const response = await fetch(`${API_BASE_URL}/quizzes`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: quizData
@@ -28,7 +27,7 @@ export class ApiService {
 	}
 
 	static async updateQuiz(id: string, quizData: string) {
-		const response = await fetch(`${API_BASE_URL}/${id}`, {
+		const response = await fetch(`${API_BASE_URL}/quizzes/${id}`, {
 			method: 'PUT',
 			headers: { 'Content-Type': 'application/json' },
 			body: quizData

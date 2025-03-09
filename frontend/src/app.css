@@ -5,11 +5,6 @@
 @theme {
   --font-sansita: "Sansita Swashed", sans-serif;
   --font-poppins: "Poppins", sans-serif;
-  --color-brown-100: rgba(217, 178, 140, 1);
-  --color-brown-200: rgba(194, 153, 112, 1);
-  --color-brown-300: rgba(174, 120, 66, 1);
-  --color-brown-400: rgba(143, 89, 36, 1);
-  --color-brown-500: rgba(122, 76, 31, 1);
   --color-grey-100: rgba(168, 179, 190, 1);
   --color-grey-200: rgba(138, 153, 168, 1);
   --color-grey-300: rgba(98, 115, 132, 1);
@@ -19,12 +14,18 @@
   --color-grey-700: rgba(51, 62, 77, 1);
   --color-grey-800: rgba(42, 55, 70, 1);
   --color-grey-900: rgba(34, 45, 57, 1);
+  --color-grey-950: rgba(27, 35, 45, 1);
+  --color-brown-50: rgba(230, 190, 140, 1);
+  --color-brown-100: rgba(217, 178, 140, 1);
+  --color-brown-200: rgba(194, 153, 112, 1);
+  --color-brown-300: rgba(174, 120, 66, 1);
+  --color-brown-400: rgba(143, 89, 36, 1);
+  --color-brown-500: rgba(122, 76, 31, 1);
   --color-brown-600: rgba(100, 60, 27, 1);
   --color-brown-700: rgba(87, 53, 25, 1);
   --color-brown-800: rgba(78, 48, 24, 1);
   --color-brown-900: rgba(62, 37, 19, 1);
   --color-brown-950: rgba(54, 32, 18, 1);
-  --color-grey-950: rgba(27, 35, 45, 1);
   --color-leafy-100: rgba(166, 217, 140, 1);
   --color-leafy-200: rgba(133, 194, 112, 1);
   --color-leafy-300: rgba(87, 170, 60, 1);
@@ -39,6 +40,7 @@
 }
 
 @layer base {
+
   h1,
   h2,
   h3,

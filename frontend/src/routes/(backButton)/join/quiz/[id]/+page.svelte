@@ -8,32 +8,22 @@
 </script>
 
 <div class="flex h-screen w-full">
-	<div class="bg-brown-400 flex w-24 flex-col items-center justify-start pt-5">
-		<a
-			href={pageRoutes.home}
-			aria-label="Back"
-			class="hover:bg-brown-800 flex items-center justify-center rounded-xl p-5 duration-100 hover:*:invert"
-			><img src={arrowLeft} class="size-8 invert" alt="back button" /></a
-		>
-	</div>
-	<main
-		class="relative w-0 flex-1"
-		style="background-image: url({data.thumbnail}); background-size: cover;"
-	>
-		<div class="absolute bottom-0 left-0 flex h-3/5 w-full flex-col justify-between bg-white">
-			<div class="flex h-full w-1/2 flex-col justify-between p-10">
+	<main class="relative w-0 flex-1">
+		<div class="absolute bottom-0 left-0 flex h-1/2 w-full flex-col justify-between bg-white">
+			<div class="flex h-full w-full flex-col justify-between p-10">
 				<div id="text-container" class="flex w-full flex-col gap-y-5">
-					<div>
-						<h2 id="title" class="text-4xl">{data.title}</h2>
-						<h2 id="creator">by {data.creatorName}</h2>
+					<div class="flex flex-col gap-y-2">
+						<h2 id="title" class="text-4xl font-semibold">{data.title}</h2>
+						<span class="flex gap-x-2">
+							<h2 id="creator">by {data.creatorName}</h2>
+							<p class="text-brown-400">
+								(Last updated {`${data.lastUpdated.date}/${data.lastUpdated.month}/${data.lastUpdated.year}`})
+							</p>
+						</span>
 					</div>
 					<p id="description" class="w-4/5">
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris laoreet convallis
-						fringilla. Sed at scelerisque libero. Integer quis leo a lectus bibendum aliquam ut a
-						est. Praesent in risus aliquet, eleifend justo id, ornare dui. Curabitur rhoncus
-						porttitor mauris, a suscipit est suscipit ac. Fusce rhoncus dignissim leo id finibus.
+						{data.description}
 					</p>
-					<p id="last-updated">{data.lastUpdated}</p>
 				</div>
 				<div class="flex w-full justify-between">
 					<span class="flex items-center gap-x-2"
@@ -51,11 +41,17 @@
 							{timeToString(data.durationInSeconds)}
 						</h2>
 					</span>
-					<a
-						href={pageRoutes.join.quiz(data.id)}
-						class="font-poppins hover:bg-brown-700 bg-brown-950 rounded-xl px-5 py-3 text-white"
-						>Take quiz</a
-					>
+					<div class="flex items-center gap-x-4">
+						<a
+							href={pageRoutes.quizzes.edit(data.id)}
+							class="font-poppins text-brown-600 hover:underline">Edit quiz</a
+						>
+						<a
+							href={pageRoutes.join.quiz(data.id)}
+							class="font-poppins hover:bg-brown-700 bg-brown-950 rounded-xl px-5 py-3 text-white"
+							>Take quiz</a
+						>
+					</div>
 				</div>
 			</div>
 		</div>
