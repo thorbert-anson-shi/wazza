@@ -1,6 +1,7 @@
-import { fail, type Actions } from '@sveltejs/kit';
+import { fail, redirect, type Actions } from '@sveltejs/kit';
 import { ApiService } from '$lib/apiService';
 import { z } from 'zod';
+import { pageRoutes } from '$lib/routes';
 
 const quizDataSchema = z.object({
 	quizTitle: z.string().max(256).min(0),
@@ -49,19 +50,20 @@ export const actions = {
 		// Construct the quiz object
 		const quizData = {
 			title: quizTitle,
-			thumbnail: thumbnail,
+			thumbnail: thumbnail == '' ? 'default_profiles/default_profile' : thumbnail,
 			description: quizDescription,
 			durationInSeconds: durationInSeconds
 		};
 
 		const quizId = data.get('quizId') as string;
 
+		let res;
 		try {
-			let res = await ApiService.updateQuiz(quizId, JSON.stringify(quizData));
+			res = await ApiService.updateQuiz(quizId, JSON.stringify(quizData));
 		} catch (error) {
 			return fail(500, { error: error });
 		}
 
-		return { success: true };
+		redirect(303, pageRoutes.join.quiz(quizId));
 	}
 } satisfies Actions;

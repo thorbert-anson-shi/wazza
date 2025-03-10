@@ -1,10 +1,10 @@
 import type { QuizDetails } from './types';
 
-const API_BASE_URL = `${import.meta.env.VITE_API_URL_DEV!}`;
+const API_BASE_URL = `${import.meta.env.VITE_API_URL!}`;
 
 export class ApiService {
-	static async getQuizzes(): Promise<QuizDetails[]> {
-		const response = await fetch(`${API_BASE_URL}/quizzes`);
+	static async getQuizzes(limit: number): Promise<QuizDetails[]> {
+		const response = await fetch(`${API_BASE_URL}/quizzes?limit=${limit}`);
 		if (!response.ok) throw new Error('Failed to fetch quizzes');
 		return response.json();
 	}
@@ -41,6 +41,12 @@ export class ApiService {
 			method: 'DELETE'
 		});
 		if (!response.ok) throw new Error('Failed to delete quiz');
+		return response.json();
+	}
+
+	static async getCategories() {
+		const response = await fetch(`${API_BASE_URL}/quizzes/categories`);
+		if (!response.ok) throw new Error('Failed to fetch categories');
 		return response.json();
 	}
 }

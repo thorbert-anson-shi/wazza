@@ -41,7 +41,7 @@
 			>
 				<img src="" alt="Profile" class="size-14 rounded-full bg-white" />
 				<div>
-					<h3 class="font-bold">Thorbert</h3>
+					<h3 class="font-bold">Username</h3>
 					<p>View profile</p>
 				</div>
 			</a>

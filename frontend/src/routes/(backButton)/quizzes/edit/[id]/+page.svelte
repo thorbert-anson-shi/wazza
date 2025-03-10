@@ -23,6 +23,7 @@
 			<input
 				class="w-full"
 				placeholder="Title"
+				value={data.title}
 				type="text"
 				name="quizTitle"
 				id="quiz-title-input"
@@ -36,6 +37,7 @@
 			<textarea
 				class="w-full"
 				placeholder="Description"
+				value={data.description}
 				rows="5"
 				name="quizDescription"
 				id="quiz-description-input"
@@ -49,15 +51,33 @@
 			<label for="duration-input">Time limit</label>
 			<div id="duration-input" class="flex space-x-5">
 				<span class="flex items-center space-x-2">
-					<input type="number" class="w-24" name="hours" id="hours-input" />
+					<input
+						type="number"
+						value={Math.floor(data.durationInSeconds / 3600)}
+						class="w-24"
+						name="hours"
+						id="hours-input"
+					/>
 					<p>h</p>
 				</span>
 				<span class="flex items-center space-x-2">
-					<input type="number" class="w-24" name="minutes" id="minutes-input" />
+					<input
+						type="number"
+						value={Math.floor(data.durationInSeconds / 60) % 60}
+						class="w-24"
+						name="minutes"
+						id="minutes-input"
+					/>
 					<p>min</p>
 				</span>
 				<span class="flex items-center space-x-2">
-					<input type="number" class="w-24" name="seconds" id="seconds-input" />
+					<input
+						type="number"
+						value={data.durationInSeconds % 60}
+						class="w-24"
+						name="seconds"
+						id="seconds-input"
+					/>
 					<p>sec</p>
 				</span>
 			</div>

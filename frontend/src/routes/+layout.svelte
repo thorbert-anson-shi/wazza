@@ -5,7 +5,7 @@
 	let { children } = $props();
 </script>
 
-<div class="flex h-screen w-screen">
-	<Drawer class="sticky top-0 h-full drop-shadow-lg" />
+<div class="flex h-full w-full">
+	<Drawer class="sticky top-0 h-screen drop-shadow-lg" />
 	{@render children()}
 </div>

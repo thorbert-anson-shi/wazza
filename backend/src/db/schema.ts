@@ -9,8 +9,10 @@ import {
   text,
   boolean,
   timestamp,
+  json,
 } from "drizzle-orm/pg-core";
 import { sql } from "drizzle-orm";
+import { object, string } from "zod";
 
 export const dev = pgSchema("dev");
 
@@ -63,30 +65,15 @@ export const quizCategoryInDev = dev.table(
   (table) => [unique("quizCategory_categoryName_unique").on(table.categoryName)]
 );
 
-export const questionInDev = dev.table(
-  "question",
-  {
-    qno: integer().notNull(),
-    content: text().notNull(),
-    quizId: varchar({ length: 10 }),
-  },
-  (table) => [
-    foreignKey({
-      columns: [table.quizId],
-      foreignColumns: [quizInDev.id],
-      name: "question_to_quiz_id",
-    }).onDelete("cascade"),
-  ]
-);
-
 export const quizInDev = dev.table("quiz", {
   id: varchar({ length: 10 }).default("0000000000").primaryKey().notNull(),
   title: varchar({ length: 256 }).notNull(),
   thumbnail: varchar({ length: 64 }),
   durationInSeconds: integer(),
-  isValid: boolean().default(true).notNull(),
   creatorName: varchar({ length: 256 }).notNull(),
   description: text(),
+  answerKey: json(),
+  isValid: boolean().default(true).notNull(),
   createdAt: timestamp({ mode: "date" }).defaultNow(),
   lastUpdated: timestamp({ mode: "date" }).defaultNow(),
 });

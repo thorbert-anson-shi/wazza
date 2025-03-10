@@ -1,10 +1,17 @@
-import { pgTable, pgSchema, foreignKey, varchar, serial, unique, integer, text, boolean, timestamp } from "drizzle-orm/pg-core"
+import { pgTable, pgSchema, unique, serial, varchar, foreignKey, integer, boolean, text, timestamp, json } from "drizzle-orm/pg-core"
 import { sql } from "drizzle-orm"
 
 export const dev = pgSchema("dev");
 
 export const quizCategoryIdSeqInDev = dev.sequence("quizCategory_id_seq", {  startWith: "1", increment: "1", minValue: "1", maxValue: "2147483647", cache: "1", cycle: false })
 export const quizToCategoryCategoryIdSeqInDev = dev.sequence("quizToCategory_categoryId_seq", {  startWith: "1", increment: "1", minValue: "1", maxValue: "2147483647", cache: "1", cycle: false })
+
+export const quizCategoryInDev = dev.table("quizCategory", {
+	id: serial().primaryKey().notNull(),
+	categoryName: varchar({ length: 64 }),
+}, (table) => [
+	unique("quizCategory_categoryName_unique").on(table.categoryName),
+]);
 
 export const quizToCategoryInDev = dev.table("quizToCategory", {
 	quizId: varchar({ length: 10 }).notNull(),
@@ -22,25 +29,6 @@ export const quizToCategoryInDev = dev.table("quizToCategory", {
 		}),
 ]);
 
-export const quizCategoryInDev = dev.table("quizCategory", {
-	id: serial().primaryKey().notNull(),
-	categoryName: varchar({ length: 64 }),
-}, (table) => [
-	unique("quizCategory_categoryName_unique").on(table.categoryName),
-]);
-
-export const questionInDev = dev.table("question", {
-	qno: integer().notNull(),
-	content: text().notNull(),
-	quizId: varchar({ length: 10 }),
-}, (table) => [
-	foreignKey({
-			columns: [table.quizId],
-			foreignColumns: [quizInDev.id],
-			name: "question_to_quiz_id"
-		}).onDelete("cascade"),
-]);
-
 export const quizInDev = dev.table("quiz", {
 	id: varchar({ length: 10 }).default('0000000000').primaryKey().notNull(),
 	title: varchar({ length: 256 }).notNull(),
@@ -51,4 +39,5 @@ export const quizInDev = dev.table("quiz", {
 	createdAt: timestamp({ mode: 'string' }).defaultNow(),
 	lastUpdated: timestamp({ mode: 'string' }).defaultNow(),
 	thumbnail: varchar({ length: 64 }),
+	answerKey: json(),
 });

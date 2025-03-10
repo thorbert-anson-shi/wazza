@@ -123,9 +123,19 @@
 				</CldUploadWidget>
 			{/if}
 		</div>
-		<!--  
-		<label for="category-input">Categories</label>
-		<input type="checkbox" name="categories" id="category-input" /> -->
+
+		<input
+			type="text"
+			name="categories"
+			placeholder="Category"
+			list="categories"
+			id="category-input"
+		/>
+		<datalist id="categories">
+			{#each data.categories as category}
+				<option value="category">{category}</option>
+			{/each}
+		</datalist>
 
 		<div class="flex items-baseline justify-end space-x-3">
 			<button type="reset" class="underline hover:cursor-pointer">Reset form</button>

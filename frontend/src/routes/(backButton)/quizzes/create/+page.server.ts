@@ -1,6 +1,7 @@
-import { fail, type Actions } from '@sveltejs/kit';
+import { fail, redirect, type Actions } from '@sveltejs/kit';
 import { ApiService } from '$lib/apiService';
 import { z } from 'zod';
+import { pageRoutes } from '$lib/routes';
 
 const quizDataSchema = z.object({
 	quizTitle: z.string().max(256).nonempty('Title cannot be empty'),
@@ -32,7 +33,7 @@ export const actions = {
 		const thumbnail = data.get('quizThumbnail') as string;
 
 		// Handling multiple checkboxes for categories
-		const categories = data.getAll('categories') as string[]; // Gets all selected categories
+		const categories = data.get('categories') as string; // Gets all selected categories
 
 		let validationResult = quizDataSchema.safeParse({
 			quizTitle: quizTitle,
@@ -58,12 +59,13 @@ export const actions = {
 			durationInSeconds: durationInSeconds
 		};
 
+		let res;
 		try {
-			let res = await ApiService.createQuiz(JSON.stringify(quizData));
+			res = await ApiService.createQuiz(JSON.stringify(quizData));
 		} catch (error) {
 			return fail(500, { error: error });
 		}
 
-		return { success: true };
+		redirect(303, pageRoutes.join.quiz(res.id));
 	}
 } satisfies Actions;
