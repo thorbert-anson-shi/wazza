@@ -3,8 +3,8 @@ import { ApiService } from '$lib/apiService';
 import { z } from 'zod';
 
 const quizDataSchema = z.object({
-	quizTitle: z.string().max(256),
-	quizCreator: z.string().max(256),
+	quizTitle: z.string().max(256).nonempty('Title cannot be empty'),
+	quizCreator: z.string().max(256).nonempty('Creator cannot be empty'),
 	quizDescription: z.string(),
 	hours: z.number().nonnegative('Field cannot be negative'),
 	minutes: z
@@ -52,7 +52,7 @@ export const actions = {
 		// Construct the quiz object
 		const quizData = {
 			title: quizTitle,
-			thumbnail: thumbnail,
+			thumbnail: thumbnail == '' ? 'default_profiles/default_profile' : thumbnail,
 			creatorName: quizCreator,
 			description: quizDescription,
 			durationInSeconds: durationInSeconds

@@ -82,6 +82,7 @@ export const questionInDev = dev.table(
 export const quizInDev = dev.table("quiz", {
   id: varchar({ length: 10 }).default("0000000000").primaryKey().notNull(),
   title: varchar({ length: 256 }).notNull(),
+  thumbnail: varchar({ length: 64 }),
   durationInSeconds: integer(),
   isValid: boolean().default(true).notNull(),
   creatorName: varchar({ length: 256 }).notNull(),

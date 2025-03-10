@@ -3,7 +3,7 @@ import { ApiService } from '$lib/apiService';
 import { z } from 'zod';
 
 const quizDataSchema = z.object({
-	quizTitle: z.string().max(256),
+	quizTitle: z.string().max(256).min(0),
 	quizDescription: z.string(),
 	hours: z.number().nonnegative('Field cannot be negative'),
 	minutes: z
@@ -54,8 +54,10 @@ export const actions = {
 			durationInSeconds: durationInSeconds
 		};
 
+		const quizId = data.get('quizId') as string;
+
 		try {
-			let res = await ApiService.updateQuiz(JSON.stringify(quizData));
+			let res = await ApiService.updateQuiz(quizId, JSON.stringify(quizData));
 		} catch (error) {
 			return fail(500, { error: error });
 		}

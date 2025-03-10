@@ -14,10 +14,11 @@
 
 <div
 	id="form-container"
-	class="bg-brown-200 font-poppins flex w-1/2 grow flex-col items-start justify-center space-y-5 p-10"
+	class="bg-brown-100 font-poppins flex w-1/2 flex-col items-start justify-center space-y-5 rounded-xl p-10"
 >
-	<h1 class="text-3xl font-semibold">Create a quiz</h1>
+	<h1 class="text-3xl font-semibold">Edit quiz</h1>
 	<form method="post" class="flex w-full flex-col space-y-5">
+		<input type="hidden" name="quizId" value={data.id} />
 		<div class="flex grow flex-col items-start">
 			<input
 				class="w-full"
@@ -26,7 +27,9 @@
 				name="quizTitle"
 				id="quiz-title-input"
 			/>
-			{#if form?.errors?.quizTitle}{form.errors.quizTitle}{/if}
+			<div class="text-red-800">
+				{#if form?.errors?.quizTitle}{form.errors.quizTitle}{/if}
+			</div>
 		</div>
 
 		<div class="flex grow flex-col items-start">
@@ -37,7 +40,9 @@
 				name="quizDescription"
 				id="quiz-description-input"
 			></textarea>
-			{#if form?.errors?.quizDescription}{form.errors.quizDescription}{/if}
+			<div class="text-red-800">
+				{#if form?.errors?.quizDescription}{form.errors.quizDescription}{/if}
+			</div>
 		</div>
 
 		<div class="flex flex-col space-y-2">
@@ -56,7 +61,7 @@
 					<p>sec</p>
 				</span>
 			</div>
-			<div id="time-errors" class="flex flex-col text-red-700">
+			<div id="time-errors" class="flex flex-col text-red-800">
 				{#if form?.errors?.hours}{form.errors.hours}{/if}
 				{#if form?.errors?.minutes}{form.errors.minutes}{/if}
 				{#if form?.errors?.seconds}{form.errors.seconds}{/if}
@@ -121,9 +126,15 @@
 <style>
 	input,
 	textarea {
-		background-color: var(--color-brown-100);
+		background-color: #e0ccb8;
+		border: 2px solid var(--color-leafy-400);
+		outline: none;
 		padding: 5px;
 		border-radius: 5px;
 		resize: none;
+	}
+
+	#form-container {
+		box-shadow: inset 0px 3px 5px var(--color-brown-500);
 	}
 </style>

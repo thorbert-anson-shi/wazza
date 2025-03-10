@@ -9,7 +9,12 @@
 		href={pageRoutes.home}
 		aria-label="Back"
 		class="hover:bg-brown-800 flex h-fit w-fit items-center justify-center rounded-xl p-5 duration-100"
-		><img draggable="false" src={arrowLeft} class="h-auto w-10 invert" alt="back button" /></a
+		><img
+			draggable="false"
+			src={arrowLeft}
+			class="h-auto w-16 invert md:w-14"
+			alt="back button"
+		/></a
 	>
 </div>
 <main class="bg-brown-200 flex h-full w-full items-center justify-center p-10">

@@ -5,6 +5,7 @@
 	import Loading from '$lib/components/loading.svelte';
 	import leaf from '$lib/assets/leaf-modified.svg';
 	import type { PageProps } from './$types';
+	import { pageRoutes } from '$lib/routes';
 
 	let { data }: PageProps = $props();
 </script>
@@ -29,7 +30,14 @@
 			{:then quizzes}
 				<ListSection sectionTitle="All quizzes" quizData={quizzes} />
 			{:catch}
-				<p>shit</p>
+				<div class="flex h-full w-full flex-col items-center justify-center">
+					<h1>Yikes! We got lost looking for your quizzes</h1>
+					<a
+						data-sveltekit-reload
+						href={pageRoutes.home}
+						class="font-poppins text-leafy-400 font-semibold underline">Reload</a
+					>
+				</div>
 			{/await}
 			<footer class="mx-auto"></footer>
 		</section>

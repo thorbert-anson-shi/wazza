@@ -9,15 +9,16 @@
 
 <a draggable="false" href={pageRoutes.join.quiz(props.id)}>
 	<div
-		class="w-fit shrink-0 overflow-clip rounded-xl bg-white drop-shadow-md duration-100 ease-in hover:scale-[1.03] hover:cursor-pointer hover:drop-shadow-lg active:scale-[0.98]"
+		class="w-[300px] shrink-0 overflow-clip rounded-xl bg-white drop-shadow-md duration-100 ease-in hover:scale-[1.03] hover:cursor-pointer hover:drop-shadow-lg active:scale-[0.98]"
 	>
 		<CldImage
 			id="quizThumbnail"
 			draggable="false"
-			class="border-leafy-200 h-48 w-fit border-b-4 object-cover"
+			class="border-leafy-200 border-b-4 object-fill"
 			width="300"
 			height="200"
-			src={props.thumbnail == null ? 'default' : props.thumbnail}
+			namedTransformations={['thumbnail']}
+			src={props.thumbnail == null ? 'default_profiles/default_profile' : props.thumbnail}
 		/>
 		<div id="quizInfo" class="font-poppins p-5">
 			<h3

@@ -26,7 +26,10 @@
 				name="quizTitle"
 				id="quiz-title-input"
 			/>
-			{#if form?.errors?.quizTitle}{form.errors.quizTitle}{/if}
+
+			<div class="text-red-800">
+				{#if form?.errors?.quizTitle}{form.errors.quizTitle}{/if}
+			</div>
 		</div>
 
 		<div class="flex grow flex-col items-start">
@@ -37,7 +40,9 @@
 				name="quizCreator"
 				id="quiz-creator-input"
 			/>
-			{#if form?.errors?.quizCreator}{form.errors.quizCreator}{/if}
+			<div class="text-red-800">
+				{#if form?.errors?.quizCreator}{form.errors.quizCreator}{/if}
+			</div>
 		</div>
 
 		<div class="flex grow flex-col items-start">
@@ -48,7 +53,9 @@
 				name="quizDescription"
 				id="quiz-description-input"
 			></textarea>
-			{#if form?.errors?.quizDescription}{form.errors.quizDescription}{/if}
+			<div class="text-red-800">
+				{#if form?.errors?.quizDescription}{form.errors.quizDescription}{/if}
+			</div>
 		</div>
 
 		<div class="flex flex-col space-y-2">
@@ -67,7 +74,7 @@
 					<p>sec</p>
 				</span>
 			</div>
-			<div id="time-errors" class="flex flex-col text-red-700">
+			<div id="time-errors" class="flex flex-col text-red-800">
 				{#if form?.errors?.hours}{form.errors.hours}{/if}
 				{#if form?.errors?.minutes}{form.errors.minutes}{/if}
 				{#if form?.errors?.seconds}{form.errors.seconds}{/if}
@@ -136,9 +143,9 @@
 	textarea {
 		border: 2px solid var(--color-leafy-400);
 		background-color: #e0ccb8;
+		outline: none;
 		padding: 5px;
 		border-radius: 5px;
-		width: 100%;
 		resize: none;
 	}
 
